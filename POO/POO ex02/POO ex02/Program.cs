@@ -10,7 +10,6 @@ namespace POO_ex02
     {
         static void Main(string[] args)
         {
-            string letter = "not y or n";
             int count =0;
             List<Game> games= new List<Game>();
             Console.WriteLine("Hi, this is an App to register games (here you can register up to 10 games.\n\nPlease press any key to continue");
@@ -18,7 +17,6 @@ namespace POO_ex02
             do
             {
                 Console.Clear();
-                bool registerConfirmation = false;
                 Game game = new Game();
 
                 do
@@ -81,44 +79,19 @@ namespace POO_ex02
                     } while (true);
                     Console.WriteLine("Please confirm the data of the game:\n");
                     game.GetInfo();
-                    letter = "not y or n";
-                    do
-                    {
-                        try
-                        {
-                            Console.WriteLine("Type 'y' to confirm and register the game or 'n' to decline and start the registration process again");
-                            letter = Console.ReadLine().ToLower();
-                            registerConfirmation = true;
-                            Console.Clear();
-                        }
-                        catch (Exception error)
-                        {
-                            Console.WriteLine(error.Message);
-                        }
 
-                    } while (letter != "y" && letter != "n");
-                } while (!registerConfirmation);
+                  
+                    Console.WriteLine("Type 'y' to confirm and register the game or 'n' to decline and start the registration process again");
+                          
+                } while (Console.ReadKey().Key == ConsoleKey.N);
 
                 games.Add(game);
                 Console.WriteLine("The game was succesfully registered");
-                letter = "not y or n";
-                do
-                {
-                    try
-                    {
-                        Console.WriteLine("Type 'y' to start a new registration process or 'n' to decline and close the app");
-                        letter = Console.ReadLine().ToLower();
-                        registerConfirmation = true;
-                        Console.Clear();
-                    }
-                    catch (Exception error)
-                    {
-                        Console.WriteLine(error.Message);
-                    }
-
-                } while (letter != "y" && letter != "n");
+                
+                Console.WriteLine("Type 'y' to start a new registration process or 'n' to decline and close the app");
+                       
                 count++;
-            } while (letter == "y" && count <10);
+            } while (Console.ReadKey().Key == ConsoleKey.Y && count <10);
             foreach(Game game in games)
             {
                 Console.WriteLine("Informações do jogo " + game.GetName() + ":");
