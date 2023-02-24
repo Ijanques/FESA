@@ -23,13 +23,20 @@ namespace POO_ex02
 
                 do
                 {
-                    string code;
                     do
                     {
-                        Console.Clear();
-                        Console.WriteLine("Type the code of the game: ");
-                         code = Console.ReadLine();
-                    }while (!int.TryParse(code, out game.SetCode(Convert.ToInt32(code));
+                        try
+                        {
+                            Console.WriteLine("Type the code of the game: ");
+                            game.SetCode(Convert.ToInt32(Console.ReadLine()));
+                            Console.Clear();
+                            break;
+                        }
+                        catch (Exception error)
+                        {
+                            Console.WriteLine(error.Message);
+                        }
+                    } while (true);
                     do
                     {
                         try
