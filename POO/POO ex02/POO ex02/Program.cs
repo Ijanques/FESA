@@ -94,6 +94,7 @@ namespace POO_ex02
                        
                 count++;
             } while (Console.ReadKey().Key == ConsoleKey.Y && count <10);
+            Console.Clear();
             foreach(Game game in games)
             {
                 Console.WriteLine("Informações do jogo " + game.GetName() + ":");
