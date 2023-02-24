@@ -67,7 +67,7 @@ namespace POO_ex02
 
         public void GetInfo()
         {
-            Console.WriteLine(code + "\n" + name + "\n" + category + "\n" + date);
+            Console.WriteLine(code + "\n" + name + "\n" + category + "\n" + date + "\n\n");
         }
     }
 }
