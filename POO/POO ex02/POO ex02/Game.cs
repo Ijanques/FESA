@@ -20,10 +20,9 @@ namespace POO_ex02
             {
                 throw new Exception("The game code can't be 0 or less");
             }
-            else
-            {
-                code = cod;
-            }
+            
+            this.code = cod;
+            
         }
 
         public int GetCode() => code;
@@ -34,10 +33,10 @@ namespace POO_ex02
             {
                 throw new Exception("The game should have a valid name");
             }
-            else
-            {
-                this.name = name;
-            }
+           
+            
+            this.name = name;
+            
         }
 
         public string GetName() => name;
@@ -48,10 +47,9 @@ namespace POO_ex02
             {
                 throw new Exception("The game should have a valid category name");
             }
-            else
-            {
-                this.category = category;
-            }
+            
+            this.category = category;
+            
         }
         public string GetCategory() => category;
 
@@ -61,10 +59,9 @@ namespace POO_ex02
             {
                 throw new Exception("The game should have a valid release date");
             }
-            else
-            {
-                this.date = date;
-            }
+            
+            this.date = date;
+            
         }
         public DateTime GetDate() => date;
 
