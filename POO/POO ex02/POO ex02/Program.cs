@@ -21,6 +21,7 @@ namespace POO_ex02
 
                 do
                 {
+                    Console.Clear();
                     do
                     {
                         try
@@ -84,6 +85,7 @@ namespace POO_ex02
                     Console.WriteLine("Type 'y' to confirm and register the game or 'n' to decline and start the registration process again");
                           
                 } while (Console.ReadKey().Key == ConsoleKey.N);
+                Console.Clear();
 
                 games.Add(game);
                 Console.WriteLine("The game was succesfully registered");
