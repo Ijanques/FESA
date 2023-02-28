@@ -1,0 +1,11 @@
+Z:\Github\FESA\POO\POO_EX3\POO_EX3\bin\Debug\POO_EX3.exe.config
+Z:\Github\FESA\POO\POO_EX3\POO_EX3\bin\Debug\POO_EX3.exe
+Z:\Github\FESA\POO\POO_EX3\POO_EX3\bin\Debug\POO_EX3.pdb
+Z:\Github\FESA\POO\POO_EX3\POO_EX3\obj\Debug\POO_EX3.csproj.AssemblyReference.cache
+Z:\Github\FESA\POO\POO_EX3\POO_EX3\obj\Debug\POO_EX3.csproj.SuggestedBindingRedirects.cache
+Z:\Github\FESA\POO\POO_EX3\POO_EX3\obj\Debug\POO_EX3.Form1.resources
+Z:\Github\FESA\POO\POO_EX3\POO_EX3\obj\Debug\POO_EX3.Properties.Resources.resources
+Z:\Github\FESA\POO\POO_EX3\POO_EX3\obj\Debug\POO_EX3.csproj.GenerateResource.cache
+Z:\Github\FESA\POO\POO_EX3\POO_EX3\obj\Debug\POO_EX3.csproj.CoreCompileInputs.cache
+Z:\Github\FESA\POO\POO_EX3\POO_EX3\obj\Debug\POO_EX3.exe
+Z:\Github\FESA\POO\POO_EX3\POO_EX3\obj\Debug\POO_EX3.pdb

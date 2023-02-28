@@ -19,7 +19,7 @@ namespace POO_EX3
                 throw new Exception("Please enter a valid code");
             cod = value;
         }
-        public int GetCodigo() => cod;
+        public int GetCode() => cod;
 
         
         
@@ -44,5 +44,13 @@ namespace POO_EX3
             rg = value;
         }
         public string GetRg() => rg;
+
+        public double GetINSS() => wage * 0.11;
+
+        public double GetLiquidWage() => wage - GetINSS();
+
+       
+            
+        
     }
 }
