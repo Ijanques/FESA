@@ -1,0 +1,8 @@
+Z:\Github\FESA\POO\POO_EX_07\POO_EX_07\bin\Debug\POO_EX_07.exe.config
+Z:\Github\FESA\POO\POO_EX_07\POO_EX_07\bin\Debug\POO_EX_07.exe
+Z:\Github\FESA\POO\POO_EX_07\POO_EX_07\bin\Debug\POO_EX_07.pdb
+Z:\Github\FESA\POO\POO_EX_07\POO_EX_07\obj\Debug\POO_EX_07.csproj.AssemblyReference.cache
+Z:\Github\FESA\POO\POO_EX_07\POO_EX_07\obj\Debug\POO_EX_07.csproj.SuggestedBindingRedirects.cache
+Z:\Github\FESA\POO\POO_EX_07\POO_EX_07\obj\Debug\POO_EX_07.csproj.CoreCompileInputs.cache
+Z:\Github\FESA\POO\POO_EX_07\POO_EX_07\obj\Debug\POO_EX_07.exe
+Z:\Github\FESA\POO\POO_EX_07\POO_EX_07\obj\Debug\POO_EX_07.pdb
