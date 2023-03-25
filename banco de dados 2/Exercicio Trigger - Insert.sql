@@ -16,16 +16,16 @@
 	todos os itens que existem para essa nota na tabela
 	de itensNotaFiscal
 */
-
+use Comercio
 --EX1 Trigger inserir nota fiscal
 create or alter trigger trg_InsereNota on notaFiscal
 for insert as 
 begin
 	declare @data smalldatetime
 	select @data = dataemissao from inserted
-	if @data > SYSDATETIME()
+	if @data < SYSDATETIME()
 	begin
-		raiserror('A data da nota fiscal não pode ser maior que a atual', 16, 1)
+		raiserror('A data da nota fiscal não pode ser menor que a atual', 16, 1)
 		rollback transaction
 	end
 end
@@ -38,5 +38,35 @@ insert into notafiscal values(1, '11-09-2023', 'William')
 create or alter trigger trg_insereItens on itensnotafiscal
 for insert as 
 begin
-	declare @qtd
+	declare @qtd int
+	declare @codProduto decimal(10,2)
+	declare @valor decimal(10,2)
+
+	select @qtd = quantidade, @codProduto = codproduto, @valor = valor from inserted
+	
+
+
+	if @qtd < 0 
+	begin
+		raiserror('A quantidade não pode ser 0 ou menor', 14, 1)
+		rollback transaction
+	end
+	if @valor <> ((select preco from produto where codProduto = @codProduto) * @qtd)
+	begin 
+		raiserror('O valor deve ser inserido corretamente', 14, 1)
+		rollback transaction
+	end
 end
+insert into itensNotaFiscal values (5, 4, 4, 27.04)
+
+--ex3
+
+create or alter trigger trg_excluiNota on notafiscal
+instead of delete as
+begin
+	declare @codNota int = (select nrNota from deleted) 
+	delete from itensNotaFiscal where nrNota = @codNota
+	delete from notaFiscal where nrNota = @codNota
+end
+
+delete from notaFiscal where nrNota = 5 
