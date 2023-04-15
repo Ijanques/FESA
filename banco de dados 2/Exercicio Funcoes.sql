@@ -18,3 +18,23 @@ returns decimal(10,2) as
 --chamada
 
 select f.func_nome, f.func_salario, dbo.mediaSalario(f.setor_id) as media_salarial from funcionarios f
+
+--Procedure que exibe quem está acima ou abaixo da meida do salario
+
+create or alter procedure sp_AcimaBaixo(@tipo varchar(10)) as
+begin
+	if @tipo = 'acima' begin
+		select f.func_nome, f.func_salario
+		from funcionarios f
+		where f.func_salario > dbo.mediaSalario(f.setor_id)
+	end
+	else begin
+		select f.func_nome, f.func_salario
+		from funcionarios f
+		where f.func_salario < dbo.mediaSalario(f.setor_id)
+	end
+end
+
+
+exec sp_AcimaBaixo 'acima'
+	
