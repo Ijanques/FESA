@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    internal class CarroDePasseio : Iveiculo, IVeiculoFechados
+    internal class CarroDePasseio : Iveiculo, IVeiculoFechados, IComparable
     {
         int velocidadeAtual;
 
@@ -27,6 +27,11 @@ namespace Interfaces
         public void Buzinar()
         {
             Console.WriteLine("BIBI");
+        }
+        public int CompareTo(object obj)
+        {
+            Iveiculo veiculo = obj as Iveiculo;
+             return this.VelocidadeAtual.CompareTo(veiculo.VelocidadeAtual);
         }
         public void TrocarMarcha(int marcha)
         {
