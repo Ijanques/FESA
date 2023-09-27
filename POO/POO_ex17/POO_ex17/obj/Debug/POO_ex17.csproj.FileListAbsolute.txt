@@ -1,0 +1,11 @@
+C:\Users\081220030\source\repos\POO_ex17\POO_ex17\bin\Debug\POO_ex17.exe.config
+C:\Users\081220030\source\repos\POO_ex17\POO_ex17\bin\Debug\POO_ex17.exe
+C:\Users\081220030\source\repos\POO_ex17\POO_ex17\bin\Debug\POO_ex17.pdb
+C:\Users\081220030\source\repos\POO_ex17\POO_ex17\obj\Debug\POO_ex17.csproj.AssemblyReference.cache
+C:\Users\081220030\source\repos\POO_ex17\POO_ex17\obj\Debug\POO_ex17.csproj.SuggestedBindingRedirects.cache
+C:\Users\081220030\source\repos\POO_ex17\POO_ex17\obj\Debug\POO_ex17.Form1.resources
+C:\Users\081220030\source\repos\POO_ex17\POO_ex17\obj\Debug\POO_ex17.Properties.Resources.resources
+C:\Users\081220030\source\repos\POO_ex17\POO_ex17\obj\Debug\POO_ex17.csproj.GenerateResource.cache
+C:\Users\081220030\source\repos\POO_ex17\POO_ex17\obj\Debug\POO_ex17.csproj.CoreCompileInputs.cache
+C:\Users\081220030\source\repos\POO_ex17\POO_ex17\obj\Debug\POO_ex17.exe
+C:\Users\081220030\source\repos\POO_ex17\POO_ex17\obj\Debug\POO_ex17.pdb
