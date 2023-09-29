@@ -4,68 +4,21 @@
 #include <iostream>
 #include <random>
 #include <vector>
+#include <thread>
+#include <chrono>
+#include <mutex>
+#include <list>
 using namespace std;
 const int MAX_SIZE = 10000;
 
-int GeradorAleat() {
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> dist(1, 10000);
-
-    return dist(gen);
-}
-class MinhaLista {
-private:
-    int lista[MAX_SIZE];
-    int tamanho;
-
+class GeradorAleat {
 public:
-    MinhaLista() {
-        tamanho = 0;
-    }
+    static int GetAleat(int max) {
+        random_device rd;
+        mt19937 gen(rd());
+        uniform_int_distribution<> dist(1, max);
 
-    void inserirElemento(int elemento) {
-        if (tamanho < MAX_SIZE) {
-            lista[tamanho++] = elemento;
-        }
-        else {
-            cout << "Lista cheia. Nao e possivel inserir mais elementos.\n";
-        }
-    }
-
-    int acessarElemento(int indice) {
-        if (indice >= 0 && indice < tamanho) {
-            return lista[indice];
-        }
-        else {
-            std::cout << "Indice invalido.\n";
-            return -1; // Valor inválido para indicar erro
-        }
-    }
-
-    void removerElemento(int indice) {
-        if (indice >= 0 && indice < tamanho) {
-            for (int i = indice; i < tamanho - 1; ++i) {
-                lista[i] = lista[i + 1];
-            }
-            tamanho--;
-        }
-        else {
-            std::cout << "Indice invalido.\n";
-        }
-    }
-
-    void mostrarLista() {
-        std::cout << "Lista: ";
-        for (int i = 0; i < tamanho; ++i) {
-            std::cout << lista[i] << " ";
-        }
-        std::cout << std::endl;
-    }
-
-    void ordenarLista() {
-        std::sort(lista, lista + tamanho);
-        std::cout << "Lista ordenada.\n";
+        return dist(gen);
     }
 };
 
@@ -156,22 +109,77 @@ public:
         std::cout << std::endl;
     }
 
-    // ... operações para ordenar a lista
+    int size(){
+        Node* current = head;
+        int count = 0;
+        while (current) {
+            count++;
+            current = current->next;
+        }
+        return count;
+    }
+
+};
+
+class ProcessadorPag{
+public:
+    static void ProcessarPag(int pagamento) {
+        cout << "Processando pagamento " << pagamento << endl;
+            SimularProcesso();
+    }
+private:
+    static void SimularProcesso(){ 
+        int pausa = GeradorAleat::GetAleat(10);
+        this_thread::sleep_for(chrono::microseconds(pausa));
+    }
 };
 
 
 
+void serverThread(int id, MinhaListaDuplamenteEncadeada& listaDePagamentos, mutex& mtx) {
+    while (true) {
+        int Pagamento;
+
+        {
+            unique_lock<mutex> lock(mtx);
+            if (listaDePagamentos.size() == 0)
+                break;
+            Pagamento = listaDePagamentos.acessarElemento(0);
+            listaDePagamentos.removerElemento(0);
+        }
+        ProcessadorPag::ProcessarPag(Pagamento);
+    }
+}
 
 int main()
 {   
-    vector<int> vectorLista1000(1000);
-    MinhaLista SimpLista1000;
     MinhaListaDuplamenteEncadeada DupLista1000;
-    vector<int> vectorLista5000(5000);
-    MinhaLista SimpLista5000;
     MinhaListaDuplamenteEncadeada DupLista5000;
-    vector<int> vectorLista10000(10000);
-    MinhaLista SimpLista10000;
     MinhaListaDuplamenteEncadeada DupLista10000;
-}
+    for (int i = 0; i < 10000; ++i) {
+        int pagamento = GeradorAleat::GetAleat(MAX_SIZE); // Gere pagamentos aleatórios
+        DupLista1000.inserirElemento(pagamento); // Insira o pagamento na lista apropriada
+    }
+    for (int i = 0; i < 5000; ++i) {
+        int pagamento = GeradorAleat::GetAleat(MAX_SIZE); // Gere pagamentos aleatórios
+        DupLista5000.inserirElemento(pagamento); // Insira o pagamento na lista apropriada
+    }
+    for (int i = 0; i < MAX_SIZE; ++i) {
+        int pagamento = GeradorAleat::GetAleat(MAX_SIZE); // Gere pagamentos aleatórios
+        DupLista10000.inserirElemento(pagamento); // Insira o pagamento na lista apropriada
+    }
+    int numServers = 2;
+    mutex mtx;
+    vector<thread> serverThreads;
 
+    for (int i = 0; i < numServers; ++i) {
+        serverThreads.emplace_back(serverThread, i, ref(DupLista10000), ref(mtx));
+    }
+
+
+    for (auto& thread : serverThreads) {
+        thread.join();
+    }
+   
+    return 0;
+}
